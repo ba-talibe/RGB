@@ -7,16 +7,13 @@ import sys
 
 
 class FenPrincipal(QWidget):
-    
+
     def __init__(self):
         QWidget.__init__(self)
         self.setWindowTitle("RBG")
         self.resize(500, 300)
         self.initFen()
         self.show()
-        print(str(self.rSlider.geometry()))
-        print(str(self.gSlider.geometry()))
-        print(str(self.bSlider.geometry()))
 
     def initFen(self):
         mainLayout = QVBoxLayout()
@@ -82,10 +79,10 @@ class FenPrincipal(QWidget):
         mainLayout.addLayout(redLayout)
         mainLayout.addLayout(greenLayout)
         mainLayout.addLayout(blueLayout)
-        
+
         self.setLayout(mainLayout)
-        
-    
+
+
     def getHex(self, r, g, b):
         return " #" +str(hex(r))[2:] + str(hex(g))[2:] + str(hex(b))[2:]
 
@@ -95,14 +92,14 @@ class FenPrincipal(QWidget):
         self.couleur.setStyleSheet("QWidget { background-color: %s }" % self.col.name())
         r, g, b = self.col.red(), self.col.green(), self.col.blue()
         self.hexValue.setText(self.staticStr + ":" + self.getHex(r, g, b))
-    
+
     def changeGreen(self, val):
         self.gValue.setText(str(val))
         self.col.setGreen(val)
         self.couleur.setStyleSheet("QWidget { background-color: %s }" % self.col.name())
         r, g, b = self.col.red(), self.col.green(), self.col.blue()
         self.hexValue.setText(self.staticStr + ":" + self.getHex(r, g, b))
-    
+
     def changeBlue(self, val):
         self.bValue.setText(str(val))
         self.col.setBlue(val)
